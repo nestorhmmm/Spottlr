@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get 'sessions/destroy'
 
-  get 'users/new'
+  # get 'users/new'
 
   get 'users/create'
 
