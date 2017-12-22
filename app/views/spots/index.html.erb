@@ -4,6 +4,7 @@
     <title>Spottr</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -12,37 +13,23 @@
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
-        height: 80%;
-        width: 80%;
+        height: 100%;
+        width: 100%;
         margin: 0;
         padding: 0;
       }
     </style>
   </head>
   <body>
-    <!-- <%= hidden_field_tag :all_spots, @spots.map{|s| [s.latitude, s.longitude, s.is_open].compact}.reject(&:blank?).to_json %> -->
-    <script>
-      // console.log(gon.spots);
-    </script>
-
     <div id="map"></div>
-    <% @spots.each do |spot| %>
-      <div id="<%= dom_id spot %>" style="display: none">
-        <%= form_for(spot) do |f| %>
-          <%= f.label :description %>
-          <%= f.text_field :description %>
-          <%= f.submit %>
-        <% end  %>
+      <div class="button_map">
+        <center>
+        <button id="button-track-me" class='btn btn-primary btn-lg'>Track Me</button>
+        <button id="button-dont-track" class='btn btn-primary btn-lg'>Stop Tracking Me</button>
+        <button id="button-mark-spot" class='btn btn-primary btn-lg'>Mark Spot</button>
+        <%= link_to "Back", user_path(:user), class:'btn btn-primary btn-lg' %>
+      </center>
       </div>
-    <% end %>
-    <div id="description">
-      <!-- <input type="text" name="spotdescription">
-      <input type="submit" value="submit"> -->
-    </div>
-    <div id="locationsaved">Location Saved</div>
-    <button id="button-track-me">Track Me</button>
-    <button id="button-dont-track">Stop Tracking Me</button>
-    <button id="button-mark-spot">Mark Spot</button>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf_hNLTtGr7CruubLRsAL3ygms8LqKL-I&callback=initMap"
     async defer></script>
   </body>
