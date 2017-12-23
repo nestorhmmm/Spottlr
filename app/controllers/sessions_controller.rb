@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
-  def new; end
+  def new
+    @body_class = 'sign_up_page'
+  end
 
   def create
     user = User.find_by_username(params[:username])

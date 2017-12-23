@@ -8,6 +8,7 @@ class SpotsController < ApplicationController
   def index
     @spots = Spot.all
     gon.spots = @spots
+    # render layout: false
   end
 
   def create

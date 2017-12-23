@@ -11,25 +11,19 @@ RSpec.feature "UserViewsTheirProfiles", type: :feature do
   end
 
   before do
-    visit user_path(user)
-  end
-
-  it "displays their name" do
-    visit user_path(user)
-    expect(page).to have_content user.name
-  end
-
-  it "displays their email" do
-    expect(page).to have_content user.email
+    # login
+    visit login_path
+    fill_in "Username:", with: "talktome"
+    fill_in "Password:", with: "abc123"
+    click_button "Submit"
   end
 
   it "displays their username" do
     expect(page).to have_content user.username
   end
 
-  it "displays their spots page" do
-    save_and_open_page
-    expect(page).to have_content user.spots
+  it "displays link to their spots page" do
+    expect(page).to have_content "Start Spotting"
   end
 
 end
